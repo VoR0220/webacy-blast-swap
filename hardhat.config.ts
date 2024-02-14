@@ -2,7 +2,7 @@ import 'dotenv/config'
 import 'hardhat-typechain'
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
-import "@nomiclabs/hardhat-verify";
+import "@nomicfoundation/hardhat-verify";
 import '@nomiclabs/hardhat-ethers'
 import 'hardhat-deploy'
 import 'hardhat-deploy-ethers'

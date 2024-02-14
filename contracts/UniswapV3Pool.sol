@@ -26,6 +26,7 @@ import './interfaces/IERC20Minimal.sol';
 import './interfaces/callback/IUniswapV3MintCallback.sol';
 import './interfaces/callback/IUniswapV3SwapCallback.sol';
 import './interfaces/callback/IUniswapV3FlashCallback.sol';
+import './interfaces/IBlastInterface.sol';
 
 contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
     using LowGasSafeMath for uint256;
@@ -120,7 +121,7 @@ contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
         tickSpacing = _tickSpacing;
 
         IBlast(0x4300000000000000000000000000000000000002).configureClaimableYield();
-        IBlast(0x4300000000000000000000000000000000000002).configureGovernor(/* Actual governors contract, make constant at deploy time */);
+        IBlast(0x4300000000000000000000000000000000000002).configureGovernor(0x4300000000000000000000000000000000000002/* Actual governors contract, make constant at deploy time */);
         maxLiquidityPerTick = Tick.tickSpacingToMaxLiquidityPerTick(_tickSpacing);
     }
 
