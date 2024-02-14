@@ -1,39 +1,10 @@
-# Uniswap V3
+## Webacy Blast Submission
 
-[![Lint](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/lint.yml/badge.svg)](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/lint.yml)
-[![Tests](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/tests.yml/badge.svg)](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/tests.yml)
-[![Fuzz Testing](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/fuzz-testing.yml/badge.svg)](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/fuzz-testing.yml)
-[![Mythx](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/mythx.yml/badge.svg)](https://github.com/Uniswap/uniswap-v3-core/actions/workflows/mythx.yml)
-[![npm version](https://img.shields.io/npm/v/@uniswap/v3-core/latest.svg)](https://www.npmjs.com/package/@uniswap/v3-core/v/latest)
+The following is a modified fork of Uniswap V3 contracts that attempts utilizing core functionality of the Blast Layer2 Rollup to
+rebase yield for ETH and their native TBill Stablecoin and incentives in secure interaction within the smart contract ecosystem to create a self sustaining gasless, feeless and slippageless swap ecosystem for users who display good risk management practices with their smart contract hygiene. This works by utilizing the gas payments claim to the governor contract and also configures the token pairs yield to be held to pay the fees and gas and slippage of any trades of any user who scores a high enough risk score on Webacy's service. 
 
-This repository contains the core smart contracts for the Uniswap V3 Protocol.
-For higher level contracts, see the [uniswap-v3-periphery](https://github.com/Uniswap/uniswap-v3-periphery)
-repository.
+The service check will be configured to check a periodically updated merkle root stored in the governor's contract and whether or not an account exists in said merkle tree to determine whether they're eligible to conduct the swap. This enables an efficient storage mechanism that is scalable with the number of users to Webacy's Risk Score service and helps to make the distribution of free swaps and free gas and slippage sustainable in the long run for users.
 
-## Bug bounty
-
-This repository is subject to the Uniswap V3 bug bounty program, per the terms defined [here](./bug-bounty.md).
-
-## Local deployment
-
-In order to deploy this code to a local testnet, you should install the npm package
-`@uniswap/v3-core`
-and import the factory bytecode located at
-`@uniswap/v3-core/artifacts/contracts/UniswapV3Factory.sol/UniswapV3Factory.json`.
-For example:
-
-```typescript
-import {
-  abi as FACTORY_ABI,
-  bytecode as FACTORY_BYTECODE,
-} from '@uniswap/v3-core/artifacts/contracts/UniswapV3Factory.sol/UniswapV3Factory.json'
-
-// deploy the bytecode
-```
-
-This will ensure that you are testing against the same bytecode that is deployed to
-mainnet and public testnets, and all Uniswap code will correctly interoperate with
-your local deployment.
 
 ## Using solidity interfaces
 

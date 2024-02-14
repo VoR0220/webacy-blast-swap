@@ -2,7 +2,7 @@ import 'dotenv/config'
 import 'hardhat-typechain'
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
-import '@nomiclabs/hardhat-etherscan'
+import "@nomiclabs/hardhat-verify";
 import '@nomiclabs/hardhat-ethers'
 import 'hardhat-deploy'
 import 'hardhat-deploy-ethers'
@@ -72,6 +72,12 @@ export default {
   networks: {
     hardhat: {
       allowUnlimitedContractSize: false,
+    },
+    blast_sepolia: {
+      url: 'https://sepolia.blast.io',
+      accounts,
+      chainId: 168587773,
+      saveDeployments: true,
     },
     ethereum: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
@@ -319,7 +325,18 @@ export default {
   },
 
   etherscan: {
+    apiKey: {
+      blast_sepolia: "blast_sepolia", // apiKey is not required, just set a placeholder
+    },
     customChains: [
+      {
+        network: "blast_sepolia",
+        chainId: 168587773,
+        urls: {
+          apiURL: "https://api.routescan.io/v2/network/testnet/evm/168587773/etherscan",
+          browserURL: "https://testnet.blastscan.io"
+        }
+      },
       {
         network: 'kava',
         chainId: 2222,

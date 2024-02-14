@@ -119,6 +119,8 @@ contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
         (factory, token0, token1, fee, _tickSpacing) = IUniswapV3PoolDeployer(msg.sender).parameters();
         tickSpacing = _tickSpacing;
 
+        IBlast(0x4300000000000000000000000000000000000002).configureClaimableYield();
+        IBlast(0x4300000000000000000000000000000000000002).configureGovernor(/* Actual governors contract, make constant at deploy time */);
         maxLiquidityPerTick = Tick.tickSpacingToMaxLiquidityPerTick(_tickSpacing);
     }
 
